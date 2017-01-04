@@ -10,5 +10,6 @@ import Foundation
 
 let matrix = Matrix(rows: 3, columns: 4)
 matrix.populateMatrix()
+matrix.printMatrix()
 matrix.ref()
 matrix.printMatrix()

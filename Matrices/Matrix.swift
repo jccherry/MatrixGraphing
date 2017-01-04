@@ -96,14 +96,21 @@ class Matrix {
     func ref(){
         
         if rows == columns-1 {
+            
             //last row swapped
             var lastRowPlaced = 0
+            //orders all 1s in the first column to the top left
             for i in 0..<rowsArray.count{
                 if rowsArray[i][0] == 1 {
                     swapRows(firstRowIndex: i, secondRowIndex: lastRowPlaced)
                     lastRowPlaced+=1
                 }
             }
+            
+            for i in 1..<rowsArray.count{
+                rowsArray[i] = addDoubleArrays(firstArray: rowsArray[i], secondArray: multiplyArrayByConstant(array: rowsArray[i], constant: -1*(rowsArray[i][0]+1)))
+            }
+            
         } else {
             print("cannot perform REF without a square matrix augmented to a solution matrix")
         }
