@@ -8,12 +8,33 @@
 
 import Foundation
 
+extension _ArrayProtocol where Iterator.Element == Double{
+    func multiplyConstant(constant: Double) -> [Double] {
+        var array: [Double] = self as! [Double]
+        for i in 0..<array.count {
+            array[i] = array[i]*constant
+        }
+        return array
+    }
+    
+    func addArray(array: [Double]) -> [Double]{
+        var returnArray: [Double] = self as! [Double]
+        
+        if array.count == returnArray.count {
+            for i in 0..<returnArray.count {
+                returnArray[i] = returnArray[i] + array[i]
+            }
+        }
+        
+        return returnArray
+    }
+}
+
 class Matrix {
     
     var rows: Int
     var columns: Int
     var rowsArray: [[Double]] = []
-    
     
     init(rows: Int, columns: Int){
         
@@ -38,12 +59,14 @@ class Matrix {
         
     }
     
+    
     func printMatrix() {
         print()
         for row in rowsArray{
             print(row)
         }
         print()
+        
     }
     
     func populateMatrix(){
@@ -71,27 +94,6 @@ class Matrix {
         }
     }
     
-    func multiplyArrayByConstant(array: [Double], constant: Double) -> [Double]{
-        
-        var returnArray = array
-        for i in 0..<array.count {
-            returnArray[i] = array[i]*constant
-        }
-        return returnArray
-    }
-    
-    func addDoubleArrays(firstArray: [Double], secondArray: [Double]) -> [Double]{
-        var returnArray: [Double] = []
-        if firstArray.count == secondArray.count {
-            for i in 0..<firstArray.count {
-                returnArray.append(firstArray[i]+secondArray[i])
-            }
-        } else {
-            print("Cannot add arrays with different sizes")
-        }
-        return returnArray
-    }
-    
     
     func ref(){
         
@@ -100,15 +102,29 @@ class Matrix {
             //last row swapped
             var lastRowPlaced = 0
             //orders all 1s in the first column to the top left
-            for i in 0..<rowsArray.count{
+            for i in 0..<rows{
                 if rowsArray[i][0] == 1 {
                     swapRows(firstRowIndex: i, secondRowIndex: lastRowPlaced)
                     lastRowPlaced+=1
                 }
             }
             
-            for i in 1..<rowsArray.count{
-                rowsArray[i] = addDoubleArrays(firstArray: rowsArray[i], secondArray: multiplyArrayByConstant(array: rowsArray[i], constant: -1*(rowsArray[i][0]+1)))
+            printMatrix()
+            
+            var activeRow:Int
+            var startingRow: Int = 1
+            
+            for activeColumn in 0..<columns{
+                
+                print("column \(activeColumn)")
+                activeRow = startingRow
+                for i in activeRow..<rows{
+                    rowsArray[i] = rowsArray[i].addArray(array: rowsArray[activeRow-1].multiplyConstant(constant: (-1*rowsArray[i][activeColumn])))
+                    printMatrix()
+                    startingRow+=1
+                }
+
+            
             }
             
         } else {
