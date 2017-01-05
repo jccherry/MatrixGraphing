@@ -94,11 +94,29 @@ class Matrix {
         }
     }
     
+    func doesColumnContain(column: Int, double: Double, startingRow: Int) -> (Bool,Int) {
+        var doesContain: Bool = false
+        var rowIndex:Int = startingRow
+        
+        if 0 <= column && column < columns {
+            var rowIndexIterator = startingRow
+            
+            //while no one has been detected and the iterator has stayed within bounds of the rowsArray
+            while doesContain == false && rowIndexIterator < rows {
+                if rowsArray[rowIndexIterator][column]==double{
+                    doesContain = true
+                    rowIndex = rowIndexIterator
+                }
+                rowIndexIterator+=1
+            }
+        }
+        return (doesContain,rowIndex)
+    }
     
     func ref(){
         
         if rows == columns-1 {
-            
+            /*
             //last row swapped
             var lastRowPlaced = 0
             //orders all 1s in the first column to the top left
@@ -110,6 +128,7 @@ class Matrix {
             }
             
             printMatrix()
+            
             
             var activeRow:Int
             var startingRow: Int = 1
@@ -125,6 +144,26 @@ class Matrix {
                 }
 
             
+            }
+            */
+            
+            var startingRowIndex: Int = 0
+            for currentColumn in 0..<columns{
+                
+                //loops for every row left that hasn't been reduced
+                for row in startingRowIndex..<rowsArray.count{
+                    var (doesContainOne, foundRowIndex) = doesColumnContain(column: currentColumn, double: 1, startingRow: startingRowIndex)
+                    
+                    //swap any row with a 1 to the top position
+                    if doesContainOne{
+                        swapRows(firstRowIndex: startingRowIndex, secondRowIndex: foundRowIndex)
+                    } else if rowsArray[startingRowIndex][currentColumn] != 0{
+                        rowsArray[startingRowIndex] = rowsArray[startingRowIndex].multiplyConstant(constant: 1/rowsArray[startingRowIndex][currentColumn])
+                    }
+                    
+                    
+                }
+                startingRowIndex+=1
             }
             
         } else {
