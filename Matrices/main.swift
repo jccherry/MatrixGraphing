@@ -18,11 +18,19 @@ let matrixArray: [[Double]] = [
 
 ]
 
+let refArray: [[Double]] = [
+
+    [1.0, 2.0, 0.0, 1.0],
+    [0.0, 1.0, 1.0, 4.0],
+    [0.0, 0.0, 1.0, -1.5]
+
+]
+
 let matrix = Matrix(rows: 3, columns: 4)
 matrix.rowsArray = matrixArray
 
 matrix.printMatrix()
-matrix.ref()
-matrix.printMatrix()
+matrix.rref()
+//matrix.printMatrix()
 
 

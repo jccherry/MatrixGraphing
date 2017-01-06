@@ -119,16 +119,17 @@ class Matrix {
     
     func ref(){
         
+        printMatrix()
+        
         if rows == columns-1 {
             
-
             
             var startingRowIndex: Int = 0
             
             for currentColumn in 0..<columns{
                 
                 if startingRowIndex < rows{
-                    print("Working on Column \(currentColumn+1)")
+                    //print("Working on Column \(currentColumn+1)")
                     
                     //first, find out if the column contains a 1
                     let (doesContainOne, foundRowIndex) = doesColumnContain(column: currentColumn, double: 1, startingRow: startingRowIndex)
@@ -143,6 +144,7 @@ class Matrix {
                         printMatrix()
                     } else {
                         print("it equals zero, fix this condition")
+                        
                     }
                     
                     //reduce remaining rows by subtracting by a multiple of the starting row, which now has a 1 in the entry at the starting column
@@ -163,6 +165,50 @@ class Matrix {
         } else {
             print("cannot perform REF without a square matrix augmented to a solution matrix")
         }
+        
+    }
+    
+    func rref(){
+        ref()
+        
+        /*
+        //start at 1 to not try and reduce the augmented solution matrix
+        for currentColumnSubtractor in 1..<columns-1{
+            //subtract from the iterator in order to move backwards through the matrix
+            let currentColumn = columns - 1 - currentColumnSubtractor
+            
+            //make rowIndex rows-2 to line up one above the bottom right of the square matrix
+            var rowIndex = rows-2
+        
+            for _ in 0..<currentColumn{
+                rowsArray[rowIndex] = rowsArray[rowIndex].addArray(array: rowsArray[rowIndex+1].multiplyConstant(constant: -1*rowsArray[rowIndex][currentColumn]))
+            }
+            
+        }
+        */
+        
+        var currentColumnIndex: Int = columns - 2
+        var rowIndex:Int = rows-2
+        
+        //loop through every column besides 1 and the solution matrix
+        for _ in 0..<columns-3{
+            
+            print("Working on Column: \(currentColumnIndex+1)")
+            
+            var currentRowIndex: Int = rowIndex
+            
+            for _ in 0..<rowIndex {
+                rowsArray[currentRowIndex] = rowsArray[currentRowIndex].addArray(array: rowsArray[rowIndex+1].multiplyConstant(constant: -1*rowsArray[currentRowIndex][currentColumnIndex]))
+                currentRowIndex-=1
+            }
+            
+            printMatrix()
+            
+            currentColumnIndex-=1
+            rowIndex-=1
+            
+        }
+        
         
     }
     
