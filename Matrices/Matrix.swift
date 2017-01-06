@@ -143,7 +143,17 @@ class Matrix {
                         rowsArray[startingRowIndex] = rowsArray[startingRowIndex].multiplyConstant(constant: 1/rowsArray[startingRowIndex][currentColumn])
                         printMatrix()
                     } else {
-                        print("it equals zero, fix this condition")
+                        //print("Error: First Entry in column = 0, fix it")
+
+                        for nonZeroRowIndex in startingRowIndex..<rows-1{
+                            if rowsArray[nonZeroRowIndex][currentColumn] != 0 {
+                                swapRows(firstRowIndex: startingRowIndex, secondRowIndex: nonZeroRowIndex)
+                                
+                                print("\(1/rowsArray[startingRowIndex][currentColumn])R\(startingRowIndex) -> R\(startingRowIndex)")
+                                rowsArray[startingRowIndex] = rowsArray[startingRowIndex].multiplyConstant(constant: 1/rowsArray[startingRowIndex][currentColumn])
+                                printMatrix()
+                            }
+                        }
                     }
                     
                     //reduce remaining rows by subtracting by a multiple of the starting row, which now has a 1 in the entry at the starting column
@@ -164,6 +174,8 @@ class Matrix {
         } else {
             print("cannot perform REF without a square matrix augmented to a solution matrix")
         }
+        
+        //print("REF+++++++++++++++++++++++++")
         
     }
     

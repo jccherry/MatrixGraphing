@@ -26,10 +26,28 @@ let refArray: [[Double]] = [
 
 ]
 
-let matrix = Matrix(rows: 3, columns: 4)
-//matrix.rowsArray = matrixArray
+/*
+ 3x -5y +2z +9w +2v = -7
+ x  +4y -z  +3w -v  = 10
+ 6x +7y -z  -4w +5v = -18
+ 5x +9y +3z +6w -v  = -5
+ 2x -y  +5z -w  +8v = 12
+ */
 
-matrix.populateMatrix()
+let fiveBySix: [[Double]] = [
+
+    [3,-5,2,9,2,-7],
+    [1,4,-1,3,-1,10],
+    [6,7,-1,-4,5,-18],
+    [5,9,3,6,-1,-5],
+    [2,-1,5,-1,8,12]
+
+]
+
+let matrix = Matrix(rows: 5, columns: 6)
+matrix.rowsArray = fiveBySix
+
+
 matrix.printMatrix()
 matrix.rref()
 //matrix.printMatrix()
