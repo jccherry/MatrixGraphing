@@ -89,14 +89,17 @@ class Matrix {
             tempArray = rowsArray[firstRowIndex]
             rowsArray[firstRowIndex] = rowsArray[secondRowIndex]
             rowsArray[secondRowIndex] = tempArray
+            
+            print("Swap R\(firstRowIndex+1) & R\(secondRowIndex+1)")
+            printMatrix()
         } else {
             print("Indeces invalid")
         }
     }
     
     func doesColumnContain(column: Int, double: Double, startingRow: Int) -> (Bool,Int) {
-        var doesContain: Bool = false
-        var rowIndex:Int = startingRow
+        
+        var (doesContain, rowIndex) = (false, startingRow)
         
         if 0 <= column && column < columns {
             var rowIndexIterator = startingRow
@@ -113,58 +116,49 @@ class Matrix {
         return (doesContain,rowIndex)
     }
     
+    
     func ref(){
         
         if rows == columns-1 {
-            /*
-            //last row swapped
-            var lastRowPlaced = 0
-            //orders all 1s in the first column to the top left
-            for i in 0..<rows{
-                if rowsArray[i][0] == 1 {
-                    swapRows(firstRowIndex: i, secondRowIndex: lastRowPlaced)
-                    lastRowPlaced+=1
-                }
-            }
             
-            printMatrix()
-            
-            
-            var activeRow:Int
-            var startingRow: Int = 1
-            
-            for activeColumn in 0..<columns{
-                
-                print("column \(activeColumn)")
-                activeRow = startingRow
-                for i in activeRow..<rows{
-                    rowsArray[i] = rowsArray[i].addArray(array: rowsArray[activeRow-1].multiplyConstant(constant: (-1*rowsArray[i][activeColumn])))
-                    printMatrix()
-                    startingRow+=1
-                }
 
             
-            }
-            */
-            
             var startingRowIndex: Int = 0
+            
             for currentColumn in 0..<columns{
                 
-                //loops for every row left that hasn't been reduced
-                for row in startingRowIndex..<rowsArray.count{
-                    var (doesContainOne, foundRowIndex) = doesColumnContain(column: currentColumn, double: 1, startingRow: startingRowIndex)
+                if startingRowIndex < rows{
+                    print("Working on Column \(currentColumn+1)")
                     
-                    //swap any row with a 1 to the top position
+                    //first, find out if the column contains a 1
+                    let (doesContainOne, foundRowIndex) = doesColumnContain(column: currentColumn, double: 1, startingRow: startingRowIndex)
+                    
+                    //if it does, put the row in the top left position of the major diagonal for that column
+                    //else multiply the row at the startingRowIndex by the first entry's reciprocal to make the row have a 1 in the major diagonal if != 0
                     if doesContainOne{
-                        swapRows(firstRowIndex: startingRowIndex, secondRowIndex: foundRowIndex)
+                        swapRows(firstRowIndex: foundRowIndex, secondRowIndex: startingRowIndex)
                     } else if rowsArray[startingRowIndex][currentColumn] != 0{
+                        print("1/\(rowsArray[startingRowIndex][currentColumn])R\(startingRowIndex+1) -> R\(startingRowIndex+1)")
                         rowsArray[startingRowIndex] = rowsArray[startingRowIndex].multiplyConstant(constant: 1/rowsArray[startingRowIndex][currentColumn])
+                        printMatrix()
+                    } else {
+                        print("it equals zero, fix this condition")
                     }
                     
+                    //reduce remaining rows by subtracting by a multiple of the starting row, which now has a 1 in the entry at the starting column
+                    for rowIndex in startingRowIndex+1..<rowsArray.count{
+                        print("R\(rowIndex+1) - \(rowsArray[rowIndex][currentColumn])R\(startingRowIndex+1) -> R\(rowIndex+1)")
+                        rowsArray[rowIndex] = rowsArray[rowIndex].addArray(array: rowsArray[startingRowIndex].multiplyConstant(constant: -1*rowsArray[rowIndex][currentColumn]))
+                        printMatrix()
+                    }
                     
+                    //add one to startingRowIndex as the matrix moves down major diag
+                    startingRowIndex+=1
                 }
-                startingRowIndex+=1
+                
             }
+            
+
             
         } else {
             print("cannot perform REF without a square matrix augmented to a solution matrix")
