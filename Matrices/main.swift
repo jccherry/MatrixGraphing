@@ -27,8 +27,9 @@ let refArray: [[Double]] = [
 ]
 
 let matrix = Matrix(rows: 3, columns: 4)
-matrix.rowsArray = matrixArray
+//matrix.rowsArray = matrixArray
 
+matrix.populateMatrix()
 matrix.printMatrix()
 matrix.rref()
 //matrix.printMatrix()

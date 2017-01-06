@@ -144,7 +144,6 @@ class Matrix {
                         printMatrix()
                     } else {
                         print("it equals zero, fix this condition")
-                        
                     }
                     
                     //reduce remaining rows by subtracting by a multiple of the starting row, which now has a 1 in the entry at the starting column
@@ -171,41 +170,24 @@ class Matrix {
     func rref(){
         ref()
         
-        /*
-        //start at 1 to not try and reduce the augmented solution matrix
-        for currentColumnSubtractor in 1..<columns-1{
-            //subtract from the iterator in order to move backwards through the matrix
-            let currentColumn = columns - 1 - currentColumnSubtractor
-            
-            //make rowIndex rows-2 to line up one above the bottom right of the square matrix
-            var rowIndex = rows-2
-        
-            for _ in 0..<currentColumn{
-                rowsArray[rowIndex] = rowsArray[rowIndex].addArray(array: rowsArray[rowIndex+1].multiplyConstant(constant: -1*rowsArray[rowIndex][currentColumn]))
-            }
-            
-        }
-        */
-        
         var currentColumnIndex: Int = columns - 2
         var rowIndex:Int = rows-2
         
         //loop through every column besides 1 and the solution matrix
-        for _ in 0..<columns-3{
-            
-            print("Working on Column: \(currentColumnIndex+1)")
+        for _ in 0..<columns-2{
             
             var currentRowIndex: Int = rowIndex
             
-            for _ in 0..<rowIndex {
+            for _ in 0..<rowIndex+1 {
+                print("R\(currentRowIndex+1) - \(rowsArray[currentRowIndex][currentColumnIndex])R\(rowIndex+2) -> R\(currentRowIndex+1)")
                 rowsArray[currentRowIndex] = rowsArray[currentRowIndex].addArray(array: rowsArray[rowIndex+1].multiplyConstant(constant: -1*rowsArray[currentRowIndex][currentColumnIndex]))
+                printMatrix()
                 currentRowIndex-=1
             }
             
-            printMatrix()
-            
             currentColumnIndex-=1
             rowIndex-=1
+
             
         }
         
