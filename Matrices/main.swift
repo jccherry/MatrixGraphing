@@ -14,8 +14,6 @@ let matrixArray: [[Double]] = [
     [2,5,1,6],
     [1,2,0,1]
 
-
-
 ]
 
 let refArray: [[Double]] = [
@@ -44,8 +42,8 @@ let fiveBySix: [[Double]] = [
 
 ]
 
-let matrix = Matrix(rows: 5, columns: 6)
-matrix.rowsArray = fiveBySix
+let matrix = Matrix(rows: 3, columns: 4)
+matrix.rowsArray = matrixArray
 
 
 matrix.printMatrix()
