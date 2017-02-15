@@ -2,8 +2,7 @@
 
 Written in swift that allows for a Matrix of n x (n+1) to be reduced to REF and RREF
 
-Also includes functions for creating and printing the first quadrant of any linear or exponential mathematical function
-  I know this part isn't practical, but I was bored and wanted to see if i could do it with Matrices
+Also includes functions for creating and printing the first quadrant of any linear or exponential mathematical function. I know this part isn't practical, but I was bored and wanted to see if i could do it with Matrices
 
 Sample output:
 ```
