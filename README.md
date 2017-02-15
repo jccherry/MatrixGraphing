@@ -4,7 +4,7 @@ Written in swift that allows for a Matrix of n x (n+1) to be reduced to REF and 
 
 Also includes functions for creating and printing the first quadrant of any linear or exponential mathematical function
 Sample output:
-'''
+```{r, engine='bash'}
 Welcome to the Matrix RREF calculator. 
  Enter how many rows in a n x (n+1) matrix to solve the system.
 2
