@@ -241,7 +241,7 @@ class Matrix {
         if row > 0 && column > 0 && row <= rows && column <= columns {
             return rowsArray[row-1][column-1]
         } else {
-            print("Entry out of bounds")
+            //print("Entry out of bounds")
             return 0
         }
     }
@@ -250,7 +250,7 @@ class Matrix {
         if row > 0 && column > 0 && row <= rows && column <= columns {
             rowsArray[row-1][column-1] = value
         } else {
-            print("Entry out of bounds")
+            //print("Entry out of bounds")
         }
         
     }

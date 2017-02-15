@@ -55,4 +55,7 @@ matrix.printMatrix()
 matrix.rref()
 //matrix.printMatrix()
 
+linearGraph(slope: -1/4, shift: 4, maxX: 26, maxY: 10)
+expGraph(coefficient: -1/30, power: 2, horizShift: 30, vertShift: 30, maxX: 60, maxY: 30)
+
 
