@@ -52,6 +52,7 @@ func linearGraph(slope: Double, shift: Int, maxX: Int,maxY: Int){
     
     
     //graphMatrix.printMatrix()
+    print("\(slope)x + \(shift)")
     graphMatrix.printGraph()
 }
 

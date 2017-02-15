@@ -42,20 +42,18 @@ let fiveBySix: [[Double]] = [
 
 ]
 
-print("Welcome to the Matrix RREF calculator. \n Enter how many rows in a n x (n+1) matrix to solve the system.")
+//print("Welcome to the Matrix RREF calculator. \n Enter how many rows in a n x (n+1) matrix to solve the system.")
 
-let rowNum = Int(readLine()!)
-
-
-let matrix = Matrix(rows: rowNum!, columns: rowNum!+1)
-matrix.populateMatrix()
+//let rowNum = Int(readLine()!)
 
 
-matrix.printMatrix()
+let matrix = Matrix(rows: 5, columns: 6)
+matrix.rowsArray = fiveBySix
+
 matrix.rref()
 //matrix.printMatrix()
 
-linearGraph(slope: -1/4, shift: 4, maxX: 26, maxY: 10)
+linearGraph(slope: -1/4, shift: 10, maxX: 35, maxY: 10)
 expGraph(coefficient: -1/30, power: 2, horizShift: 30, vertShift: 30, maxX: 60, maxY: 30)
 
 
