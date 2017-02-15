@@ -206,5 +206,57 @@ class Matrix {
         
     }
     
+    func printGraph() {
+        for rowIndex in 0..<rows {
+            let rowNum = rows - rowIndex - 1
+            var rowString = ""
+            
+            for entry in rowsArray[rowNum]{
+                if entry == 1 {
+                    rowString += "*"
+                } else {
+                    rowString += " "
+                }
+                
+            }
+            print("\(rowNum+1)-|\(rowString)")
+        }
+        var bottomString = ""
+        for _ in 0..<columns{
+            bottomString += "‾"
+        }
+        print("   \(bottomString)")
+    }
+    
+    func clearMatrix(){
+        for rowIndex in 0..<rows{
+            for columnIndex in 0..<columns{
+                rowsArray[rowIndex][columnIndex] = 0
+            }
+        }
+    }
+    
+    func getEntry(row: Int, column: Int) -> Double{
+        if row > 0 && column > 0 && row <= rows && column <= columns {
+            return rowsArray[row-1][column-1]
+        } else {
+            print("Entry out of bounds")
+            return 0
+        }
+    }
+    
+    func setEntry(row: Int, column: Int, value: Double){
+        if row > 0 && column > 0 && row <= rows && column <= columns {
+            rowsArray[row-1][column-1] = value
+        } else {
+            print("Entry out of bounds")
+        }
+        
+    }
+    
+    func dimensions() -> String{
+        return "\(rows)x\(columns)"
+    }
+    
 }
 

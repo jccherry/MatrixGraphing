@@ -42,8 +42,13 @@ let fiveBySix: [[Double]] = [
 
 ]
 
-let matrix = Matrix(rows: 3, columns: 4)
-matrix.rowsArray = matrixArray
+print("Welcome to the Matrix RREF calculator. \n Enter how many rows in a n x (n+1) matrix to solve the system.")
+
+let rowNum = Int(readLine()!)
+
+
+let matrix = Matrix(rows: rowNum!, columns: rowNum!+1)
+matrix.populateMatrix()
 
 
 matrix.printMatrix()
