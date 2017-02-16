@@ -97,6 +97,37 @@ linearGraph(slope: -1/4, shift: 4, maxX: 26, maxY: 10)
 expGraph(coefficient: -1/30, power: 2, horizShift: 30, vertShift: 30, maxX: 60, maxY: 30)
 */
 
+func sinGraph(amplitude: Double, horizStretch: Double,horizShift: Int, vertShift: Int, maxX: Int, maxY: Int){
+    
+    //mutable maxes for graph sizing
+    var maxYMut: Int
+    var maxXMut: Int
+    
+    if maxY <= 0 {
+        maxYMut = 10
+    } else {
+        maxYMut = maxY
+    }
+    
+    if maxX <= 0 {
+        maxXMut = 10
+    } else {
+        maxXMut = maxX
+    }
+    
+    let graphMatrix = Matrix(rows: maxYMut, columns: maxXMut)
+    
+    for xValue in 1..<maxX+1 {
+        
+        let yValue = Int(amplitude*sin(horizStretch*(Double(xValue)) - Double(horizShift))) + vertShift
+    
+        graphMatrix.setEntry(row: yValue, column: xValue, value: 1)
+        
+    }
+    
+    print("\(amplitude)sin(\(horizStretch)x - \(horizShift)) + \(vertShiftx)")
+    graphMatrix.printGraph()
+}
 
 
 
