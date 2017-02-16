@@ -1,36 +1,11 @@
-# Matrices
+# MatrixGraphing
 
-Written in swift that allows for a Matrix of n x (n+1) to be reduced to REF and RREF
-
-Also includes functions for creating and printing the first quadrant of any linear, exponential, or sinusoidal function given a blank Matrix
+Includes functions for creating and printing the first quadrant of any linear, exponential, or sinusoidal function given a blank Matrix
 
 Positions on the graph are approximated by casting the resultant Double value from the function to an Integer Y coordinate
 
 Sample output:
 ```
-[1.0, 2.0, 3.0]
-[4.0, 5.0, 6.0]
-
-Swap R1 & R1
-
-[1.0, 2.0, 3.0]
-[4.0, 5.0, 6.0]
-
-R2 - 4.0R1 -> R2
-
-[1.0, 2.0, 3.0]
-[0.0, -3.0, -6.0]
-
-1/-3.0R2 -> R2
-
-[1.0, 2.0, 3.0]
-[-0.0, 1.0, 2.0]
-
-R1 - 2.0R2 -> R1
-
-[1.0, 0.0, -1.0]
-[-0.0, 1.0, 2.0]
-
 -0.25x + 10
 -|***                       
 -|   ****                   
@@ -75,6 +50,7 @@ R1 - 2.0R2 -> R1
 -|*                                                         * 
 -|                                                            
   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+   //can plot multiple functions on one graph
 -|                                                   *                                                
 -|                                                                                                    
 -|                                                  *                                                 
@@ -92,6 +68,6 @@ R1 - 2.0R2 -> R1
 -|*******                      *                                                                      
 -|       ********                                                                                     
 -|               ********     *                                                                       
--|                       ********                                                                     
+-|                       ****X***                                                                     
 -|                           *   ********                                                             
   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
