@@ -53,8 +53,12 @@ matrix.rowsArray = fiveBySix
 matrix.rref()
 //matrix.printMatrix()
 
-linearGraph(slope: -1/4, shift: 10, maxX: 35, maxY: 10)
-expGraph(coefficient: 1/350, power: 3, horizShift: 30, vertShift: 15, maxX: 50, maxY: 35)
-sinGraph(amplitude: 5,horizStretch: 1/10, horizShift: -Int(M_PI/2), vertShift: 10, maxX: 100, maxY: 30)
 
 
+
+
+
+let testMatrix = Matrix(rows: 30, columns: 100)
+sinGraph(amplitude: 5, horizStretch: 1/10, horizShift: -Int(M_PI/2), vertShift: 10, graphMatrix: testMatrix)
+expGraph(coefficient: 1/175, power: 3, horizShift: 40, vertShift: 10, graphMatrix: testMatrix)
+linearGraph(slope: -1/8, shift: 5, graphMatrix: testMatrix)

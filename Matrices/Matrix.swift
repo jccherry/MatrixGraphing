@@ -206,32 +206,7 @@ class Matrix {
         
     }
     
-    //graphs all ones in the matrix, upside down, as if in quadrant 1 of cartesian plane
-    func printGraph() {
         
-        //printMatrix()
-        
-        for rowIndex in 0..<rows {
-            let rowNum = rows - rowIndex - 1
-            var rowString = ""
-            
-            for entry in rowsArray[rowNum]{
-                if entry == 1 {
-                    rowString += "*"
-                } else {
-                    rowString += " "
-                }
-                
-            }
-            print("-|\(rowString)")
-        }
-        var bottomString = ""
-        for _ in 0..<columns{
-            bottomString += "‾"
-        }
-        print("  \(bottomString)")
-    }
-    
     func clearMatrix(){
         for rowIndex in 0..<rows{
             for columnIndex in 0..<columns{
