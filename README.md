@@ -2,7 +2,7 @@
 
 Written in swift that allows for a Matrix of n x (n+1) to be reduced to REF and RREF
 
-Also includes functions for creating and printing the first quadrant of any linear or exponential mathematical function
+Also includes functions for creating and printing the first quadrant of any linear or exponential mathematical function in the form y = mx+b or y = m(x-r)^n + b.
 
 Sample output:
 ```
@@ -73,4 +73,40 @@ R1 - 2.0R2 -> R1
 -|*                                                         * 
 -|                                                            
   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-  
+  0.00285714285714286(x - 30)^3 + 15
+-|                                                  
+-|                                                * 
+-|                                                  
+-|                                                  
+-|                                               *  
+-|                                                  
+-|                                              *   
+-|                                                  
+-|                                                  
+-|                                             *    
+-|                                                  
+-|                                            *     
+-|                                                  
+-|                                           *      
+-|                                          *       
+-|                                                  
+-|                                         *        
+-|                                        *         
+-|                                      **          
+-|                                     *            
+-|                      ***************             
+-|                     *                            
+-|                   **                             
+-|                  *                               
+-|                 *                                
+-|                                                  
+-|                *                                 
+-|               *                                  
+-|                                                  
+-|              *                                   
+-|                                                  
+-|             *                                    
+-|                                                  
+-|                                                  
+-|            *                                     
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
